@@ -10,7 +10,7 @@ import asyncio
 from contextlib import asynccontextmanager
 
 global_state: Dict[str, DeviceResult] = {}
-CONFIG: config.Config = config.getConfig("config.yaml")
+CONFIG: config.Config = config.getConfig("/etc/zerotier-status/config.yaml")
 ZT = ZeroTierAPI(CONFIG.token)
 INTERVAL = CONFIG.interval
 DEVICES = CONFIG.devices

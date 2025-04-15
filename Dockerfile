@@ -9,6 +9,7 @@ RUN apk update && apk add --update python3 && rm -rf /var/cache/apk/* && \
 
 WORKDIR /app
 COPY app.py .
+COPY run.py .
 COPY ZeroTier ./ZeroTier
 COPY static ./static
 
@@ -21,4 +22,5 @@ RUN pip install --no-index --find-links=/svc/wheels -r requirements.txt
 
 COPY --from=base /app /app
 WORKDIR /app
-CMD ["uvicorn", "app:app"]
+CMD ["python3", "run.py"]
+# CMD ["uvicorn", "app:app", "--host 0.0.0.0", "--port 8000"]

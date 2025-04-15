@@ -28,7 +28,18 @@
 
         <div id="device-grid" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
+            // Set the initial theme based on the system's preference
+            if (systemDarkMode) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        });
+    </script>
     <script>
         // Dark mode toggle
         const toggle = document.getElementById("theme-toggle");
@@ -59,11 +70,10 @@
             <div><span class="font-medium">Network ID:</span> ${device.network_id}</div>
             <div><span class="font-medium">Status:</span> ${device.status}</div>
             ${device.status === "offline"
-                            ? `<div><span class="font-medium">Last Online:</span> ${new Date(
-                                device.last_online
-                            ).toLocaleString()}</div>`
-                            : ""
-                        }
+                            ? `<div><span class="font-medium">Last Online:</span> ${new Date(device.last_online).toLocaleString('en-GB', {
+                                day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'
+                            })}</div>`
+                            : ""}
           `;
 
                     grid.appendChild(card);
