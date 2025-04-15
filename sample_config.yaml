@@ -1,0 +1,9 @@
+interval: 30
+token: "your_api_token_here"
+devices:
+  - name: "Device One"
+    network_id: "network1"
+    node_id: "node1"
+  - name: "Device Two"
+    network_id: "network1"
+    node_id: "node2"
